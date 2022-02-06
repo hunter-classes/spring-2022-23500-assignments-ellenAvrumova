@@ -1,6 +1,6 @@
 #include <iostream>
 
-int stepPerms(int n) {
+int stepPerms(int n) { //uses recursion
     if(n < 2) { //base case
         return 1;
     }
@@ -12,10 +12,40 @@ int stepPerms(int n) {
     }
 }
 
+int table[10000];
+int memoization(int n) { //faster/efficient recursion
+    if(n < 2) {
+        return 1;
+    }
+    if(n == 2) {
+        return 2;
+    }
+    else if(table[n] != 0) {
+        return table[n];
+    }
+    else {
+        int temp = memoization(n-1) + memoization(n-2) + memoization(n-3);
+        table[n] = temp;
+        return temp;
+    }
+}
+
 int main() {
+    
     for(int i = 0; i <= 10; i++) {
+        //When I set i < 100, my output started slowing down at 34 so I terminated the process.
         std::cout << "Steps: " << i << "\t" << "Ways: " << stepPerms(i) << std::endl;
     }
+    
+    for(int i = 0; i < 10000; i++) {
+        table[i] = 0;
+    }
+    for (int i = 0; i <= 100; i++) {
+        //Memoization runs much faster and can produce results for all 100 numbers
+        //Some results after 36 become negative because they pass the maximum number an int can hold
+        std::cout << i << " :  " << memoization(i) << std::endl;
+    }
+
     return 0;
 }
 
