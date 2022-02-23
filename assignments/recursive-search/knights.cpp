@@ -39,20 +39,23 @@ void print_result() {
 }
 
 void solve(std::string chess[], int lines, int row, int col, bool &solved) {
+    //check if puzzle is solved
     if(counter == 25) {
-        //print_board(chess, lines);
+        // print_board(chess, lines);
         solved = true;
         return;
     }
 
+    //base cases
     if(chess[row][col] == offBoard || chess[row][col] == me) {
         return;
     }
 
     chess[row][col] = me;
+    //usleep(800);
     //print_board(chess,lines);
     counter++;
-    result[row-2][col-2] = counter;
+    result[row-2][col-2] = counter; //save location and counter in 2D array
 
     if (!(solved)) solve(chess, lines, row+2, col+1, solved);
     if (!(solved)) solve(chess, lines, row+2, col-1, solved);
@@ -63,6 +66,7 @@ void solve(std::string chess[], int lines, int row, int col, bool &solved) {
     if (!(solved)) solve(chess, lines, row-1, col+2, solved);
     if (!(solved)) solve(chess, lines, row-1, col-2, solved);
 
+    //backtrack after all directions have been checked and puzzle is not solved yet
     if(!solved) {
         chess[row][col] = path;
         counter--;

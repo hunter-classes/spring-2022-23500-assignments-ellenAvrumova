@@ -3,9 +3,7 @@
 
 int main() {
     std::string chess[9];
-    int result[5][5];
-    int lines;
-    lines = load_board("chessboard.dat", chess);
+    int lines = load_board("chessboard.dat", chess);
     //print_board(chess,lines);
     
     bool solved = false;
