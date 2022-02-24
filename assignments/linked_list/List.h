@@ -7,9 +7,10 @@ class List {
 
     public:
         List();
+        ~List();
+        std::string locate(int index);
         void insert(std::string data);
+        void insert(std::string data, int index);
         std::string toString();
-        //insert at location
-        //delete at location
-        //destructor
+        void remove(int index);
 };

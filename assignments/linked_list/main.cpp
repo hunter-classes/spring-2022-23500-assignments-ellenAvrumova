@@ -45,7 +45,16 @@ int main(int argc, char *argv[]) {
     l1->insert("a");
     l1->insert("b");
     l1->insert("c");
+    std::cout << l1->toString() << std::endl; //c b a
 
-    std::cout << l1->toString() << std::endl;
+    l1->insert("d", 2);
+    std::cout << l1->toString() << std::endl; //c b d a
+
+    std::cout << l1->locate(1) << std::endl; //b
+
+    l1->remove(2);
+    std::cout << l1->toString() << std::endl; //c b a
+    l1->~List();
+    std::cout << l1->toString() << std::endl; //nullptr
     return 0;
 }
