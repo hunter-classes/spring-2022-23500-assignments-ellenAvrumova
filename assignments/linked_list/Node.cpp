@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Node.h"
 
-Node::Node() : next(nullptr) {
+Node::Node() : next(nullptr) { //sets the next as nullptr
 }
 
 Node::Node(std::string data) {

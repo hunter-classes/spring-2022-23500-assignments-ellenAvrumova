@@ -11,6 +11,7 @@ class List {
         std::string locate(int index);
         void insert(std::string data);
         void insert(std::string data, int index);
-        std::string toString();
+        std::string toString(); //for testsing and debugging
+        int length();
         void remove(int index);
 };
