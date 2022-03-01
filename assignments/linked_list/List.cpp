@@ -6,8 +6,15 @@ List::List() {
 }
 
 List::~List() {
-    head = nullptr;
-    delete head;
+    Node *trailer;
+    std::cerr << "Destructor" << std::endl;
+    while(head != nullptr) {
+        trailer = head;
+        head = head->getNext();
+        delete trailer;
+    }
+    // head = nullptr;
+    // delete head;
 }
 
 void List::insert(std::string data) {
@@ -60,7 +67,56 @@ std::string List::locate(int index) {
     }
 }
 
+//we need a pointer BEFORE the inerstion point
+/**
+ * 1) stop early
+ *  tmp->setNext(w->getNext());
+ *  w->setNext(tmp)
+ * 
+ * 2) send another pointer
+ *  T = head
+ *  while(t->getNext() != w) {
+ *      t->getNext();
+ *  }
+ *  
+ * We use piggybacking
+ * That is, send a pointer one behind that trails walker
+ * When walker points to Node n,
+ * the trailer points to Node n-1
+ */
+
 void List::insert(std::string data, int index) {
+    //Zamansky Code
+    Node *tmp = new Node(data);
+    Node *walker = head;
+    Node *trailer = nullptr; //this one follows behind walker
+
+    while(walker != nullptr && index > 0) {
+        trailer = walker; //this goes until it pointes to the pointer before the insertion point
+        walker = walker->getNext();
+        index -= 1;
+    }
+    //walker is at n, trailer is at the point before the insertion
+    //normally - temp->setNext(w); trailer->setNext(temp)
+    //first check to see if we're trying to insert beyond the end
+    //Note: we can insert a new last element
+
+    if(index > 0) {
+        std::cout << "TOO FAR" << std::endl;
+        //throw std::out_of_range("Out of range");
+    }
+
+    //inserting at location 0 will have trailer = nullptr
+    //so we have to deal with that special case
+    if(trailer == nullptr) {
+        tmp->setNext(head);
+        head = tmp;
+    }
+    else {
+        tmp->setNext(walker);
+        trailer->setNext(tmp);
+    }
+    /**
     Node *new_node = new Node(data);
     Node *walker = head;
     Node *temp;
@@ -80,9 +136,34 @@ void List::insert(std::string data, int index) {
         walker->setNext(new_node);
         new_node->setNext(temp);
     }
+    */
 }
 
 void List::remove(int index) {
+    Node *walker = head;
+    Node *trailer = nullptr;
+
+    while(walker != nullptr && index > 0) {
+        trailer = walker;
+        walker = walker->getNext();
+        index -= 1;
+    }
+
+    if(!walker) { //walker == nullptr
+        std::cout << "TOO FAR" << std::endl;
+        //throw std::out_of_range("Out of range");
+    }
+    //delete at location 0
+    if(trailer == nullptr) {
+        head = walker->getNext();
+        delete walker;
+    }
+    else { //delete normally
+        trailer->setNext(walker->getNext());
+        delete walker;
+    }
+
+    /**
     Node *walker = head;
     Node *temp;
 
@@ -103,6 +184,7 @@ void List::remove(int index) {
         }
         delete temp;
     }
+    */
 }
 
 int List::length(){
