@@ -17,3 +17,20 @@ class Node{
         std::string getData();
         Node *getNext();
 };
+
+class OListNode {
+    private:
+        int data;
+        OListNode *next;
+
+    public:
+        OListNode();
+        OListNode(int data);
+        OListNode(int data, OListNode *next);
+
+        void setData(int data);
+        void setNext(OListNode *next);
+
+        int getData();
+        OListNode *getNext();
+};

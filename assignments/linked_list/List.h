@@ -18,7 +18,7 @@ class List {
 
 class OList {
     private:
-        Node *head;
+        OListNode *head;
 
     public:
         OList();

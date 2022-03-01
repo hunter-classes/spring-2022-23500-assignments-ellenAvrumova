@@ -44,7 +44,6 @@ int main(int argc, char *argv[]) {
     // at this point walker points to (refers to) nullptr
     // and if we try to dereference it, we get a segmentation fault
     // std::cout << walker->getData() << std::endl; (gives segfault)
-*/
 
     List *l1 = new List();
     std::cout << "***Regular Insert***" << std::endl;
@@ -80,4 +79,6 @@ int main(int argc, char *argv[]) {
     l1->~List();
     std::cout << l1->toString() << std::endl; //nullptr
     return 0;
+*/
+
 }

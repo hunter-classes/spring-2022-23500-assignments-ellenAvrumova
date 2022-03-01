@@ -118,7 +118,7 @@ OList::OList() {
 }
 
 OList::~OList() {
-    Node *trailer;
+    OListNode *trailer;
     std::cerr << "Destructor" << std::endl;
     while(head != nullptr) {
         trailer = head;
@@ -132,15 +132,39 @@ void OList::insert(int value) {
 }
 
 std::string OList::toString() {
-
+    OListNode *walker = head;
+    std::string s  = "";
+    while(walker != nullptr) {
+        s += std::to_string(walker->getData()) + "-->";
+        walker = walker->getNext();
+    }
+    s += "nullptr"; //last value prints nullptr
+    return s;
 }
 
 bool OList::contains(int value) {
-
+    OListNode *walker = head;
+    while(walker != nullptr) {
+        if(walker->getNext()->getData() == value) {
+            return true;
+        }
+    }
+    return false;
 }
 
 int OList::get(int loc) {
+    OListNode *walker = head;
 
+    while(walker != nullptr && loc > 0) {
+        walker = walker->getNext();
+        loc--;
+    }
+    if(walker) {
+        return walker->getData();
+    }
+    else {
+        return -1;
+    }
 }
 
 void OList::remove(int loc) {
@@ -148,5 +172,5 @@ void OList::remove(int loc) {
 }
 
 void OList::reverse() {
-    
+
 }
