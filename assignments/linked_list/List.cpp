@@ -50,7 +50,6 @@ std::string List::locate(int index) {
 
 //piggybacking
 void List::insert(std::string data, int index) {
-    //Zamansky Code
     Node *tmp = new Node(data);
     Node *walker = head;
     Node *trailer = nullptr; //this one follows behind walker
@@ -60,11 +59,8 @@ void List::insert(std::string data, int index) {
         walker = walker->getNext();
         index -= 1;
     }
-    //walker is at n, trailer is at the point before the insertion
-    //normally - temp->setNext(w); trailer->setNext(temp)
-    //first check to see if we're trying to insert beyond the end
-    //Note: we can insert a new last element
 
+    //first check to see if we're trying to insert beyond the end
     if(index > 0) {
         std::cout << "TOO FAR" << std::endl;
         //throw std::out_of_range("Out of range");
