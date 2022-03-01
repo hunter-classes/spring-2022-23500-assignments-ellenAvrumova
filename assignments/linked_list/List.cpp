@@ -112,3 +112,41 @@ int List::length(){
   }
   return l;
 }
+
+OList::OList() {
+    head = nullptr;
+}
+
+OList::~OList() {
+    Node *trailer;
+    std::cerr << "Destructor" << std::endl;
+    while(head != nullptr) {
+        trailer = head;
+        head = head->getNext();
+        delete trailer;
+    }
+}
+
+void OList::insert(int value) {
+
+}
+
+std::string OList::toString() {
+
+}
+
+bool OList::contains(int value) {
+
+}
+
+int OList::get(int loc) {
+
+}
+
+void OList::remove(int loc) {
+
+}
+
+void OList::reverse() {
+    
+}
