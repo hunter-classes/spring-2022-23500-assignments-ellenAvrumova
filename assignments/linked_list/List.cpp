@@ -184,16 +184,36 @@ int OList::get(int loc) {
         return walker->getData();
     }
     else {
-        return -1;
+        return INT_MIN;
     }
 }
 
 void OList::remove(int loc) {
+    OListNode *walker = head;
+    OListNode *trailer = nullptr;
 
+    while(walker != nullptr && loc > 0) {
+        trailer = walker;
+        walker = walker->getNext();
+        loc -= 1;
+    }
+
+    if(!walker) { //walker == nullptr
+        throw std::out_of_range("Out of range");
+    }
+    //delete at location 0
+    if(trailer == nullptr) {
+        head = walker->getNext();
+        delete walker;
+    }
+    else { //delete normally
+        trailer->setNext(walker->getNext());
+        delete walker;
+    }
 }
 
 void OList::reverse() {
-    
+
 }
 
 int OList::length() {

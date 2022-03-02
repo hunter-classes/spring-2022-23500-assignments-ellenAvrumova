@@ -99,4 +99,18 @@ int main(int argc, char *argv[]) {
     std::cout << l2->contains(1) << std::endl; //true
     std::cout << l2->contains(5) << std::endl; //false
 
+    std::cout << "***Get***" << std::endl;
+    std::cout << l2->get(0) << std::endl; //1
+    std::cout << l2->get(1) << std::endl; //2
+    std::cout << l2->get(2) << std::endl; //3
+    std::cout << l2->get(3) << std::endl; //4
+    std::cout << l2->get(4) << std::endl; //nullptr (INT MIN)
+
+    std::cout << "***REMOVE***" << std::endl;
+
+    std::cout << "***REVERSE***" << std::endl;
+    l2->reverse();
+    std::cout << l2->toString() << std::endl;
+
+
 }
