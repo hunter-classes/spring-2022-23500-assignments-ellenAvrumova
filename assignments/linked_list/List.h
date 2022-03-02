@@ -29,4 +29,5 @@ class OList {
         int get(int loc);
         void remove(int loc);
         void reverse();
+        int length();
 };

@@ -113,6 +113,7 @@ int List::length(){
   return l;
 }
 
+//************************** OLIST BEGINNING **************************
 OList::OList() {
     head = nullptr;
 }
@@ -128,7 +129,25 @@ OList::~OList() {
 }
 
 void OList::insert(int value) {
+    OListNode *new_node = new OListNode(value);
+    OListNode *walker = head;
+    OListNode *trailer = nullptr;
 
+    int counter = 0;
+    while(walker != nullptr && walker->getData() < value) {
+        trailer = walker;
+        walker = walker->getNext();
+        counter++;
+    }
+    if(counter == 0) {
+        new_node->setNext(head);
+        head = new_node;
+        return;
+    }
+    else {
+        new_node->setNext(walker);
+        trailer->setNext(new_node);
+    }
 }
 
 std::string OList::toString() {
@@ -172,5 +191,15 @@ void OList::remove(int loc) {
 }
 
 void OList::reverse() {
+    
+}
 
+int OList::length() {
+    int l = 0;
+    OListNode *walker = head;
+    while (walker){
+        l++;
+        walker = walker->getNext();
+    }
+    return l;
 }

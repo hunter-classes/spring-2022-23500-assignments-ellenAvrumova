@@ -81,4 +81,17 @@ int main(int argc, char *argv[]) {
     return 0;
 */
 
+    OList *l2 = new OList();
+
+    std::cout << "***Insert***" << std::endl;
+    l2->insert(2);
+    std::cout << l2->toString() << std::endl; //2-->nullptr
+    l2->insert(4);
+    std::cout << l2->toString() << std::endl; //2-->4-->nullptr
+    l2->insert(3);
+    std::cout << l2->toString() << std::endl; //2-->3-->4-->nullptr
+    l2->insert(1);
+    std::cout << l2->toString() << std::endl; //1-->2-->3-->4-->nullptr
+
+    
 }
