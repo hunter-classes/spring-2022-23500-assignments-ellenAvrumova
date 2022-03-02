@@ -162,11 +162,13 @@ std::string OList::toString() {
 }
 
 bool OList::contains(int value) {
+    std::cout << std::boolalpha;
     OListNode *walker = head;
     while(walker != nullptr) {
-        if(walker->getNext()->getData() == value) {
+        if(walker->getData() == value) {
             return true;
         }
+        walker = walker->getNext();
     }
     return false;
 }

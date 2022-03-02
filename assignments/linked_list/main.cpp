@@ -93,5 +93,10 @@ int main(int argc, char *argv[]) {
     l2->insert(1);
     std::cout << l2->toString() << std::endl; //1-->2-->3-->4-->nullptr
 
-    
+    std::cout << "***Contains***" << std::endl;
+    std::cout << l2->contains(3) << std::endl; //true
+    std::cout << l2->contains(4) << std::endl; //true
+    std::cout << l2->contains(1) << std::endl; //true
+    std::cout << l2->contains(5) << std::endl; //false
+
 }
