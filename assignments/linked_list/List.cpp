@@ -7,7 +7,7 @@ List::List() {
 
 List::~List() {
     Node *trailer;
-    std::cerr << "Destructor" << std::endl;
+    //std::cerr << "Destructor" << std::endl;
     while(head != nullptr) {
         trailer = head;
         head = head->getNext();
@@ -120,7 +120,7 @@ OList::OList() {
 
 OList::~OList() {
     OListNode *trailer;
-    std::cerr << "Destructor" << std::endl;
+    //std::cerr << "Destructor" << std::endl;
     while(head != nullptr) {
         trailer = head;
         head = head->getNext();
