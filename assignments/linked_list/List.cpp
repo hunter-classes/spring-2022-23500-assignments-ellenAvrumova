@@ -200,7 +200,7 @@ void OList::remove(int loc) {
 
     if(!walker) { //walker == nullptr
         //throw std::out_of_range("Out of range");
-        std::cout << "OUT OF RANGE" << std::endl;
+        //std::cout << "OUT OF RANGE" << std::endl;
         return;
     }
     //delete at location 0

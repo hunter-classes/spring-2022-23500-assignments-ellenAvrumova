@@ -3,7 +3,7 @@
 #include "List.h"
 
 int main(int argc, char *argv[]) {
-/**
+/**s
     Node *p1 = new Node();
     p1->setData("hello"); // same as (*p1).setData 
 
@@ -110,11 +110,11 @@ int main(int argc, char *argv[]) {
     l2->insert(0);
     l2->insert(5);
     l2->insert(6);
-    //std::cout << l2->toString() << std::endl; //0-->1-->2-->3-->4-->5-->6-->nullptr
+    std::cout << "Added 0,5,6: " << l2->toString() << std::endl; //0-->1-->2-->3-->4-->5-->6-->nullptr
     l2->remove(0);
     l2->remove(4);
     l2->remove(4);
-    std::cout << l2->toString() << std::endl; //1-->2-->3-->4-->nullptr
+    std::cout << "Removed 0,5,6: " << l2->toString() << std::endl; //1-->2-->3-->4-->nullptr
     l2->remove(4); //OUT OF RANGE
     
     std::cout << "***REVERSE***" << std::endl;
