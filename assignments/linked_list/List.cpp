@@ -213,7 +213,16 @@ void OList::remove(int loc) {
 }
 
 void OList::reverse() {
+    OListNode *walker = head;
+    OListNode *trailer = nullptr;
 
+    while(walker != nullptr) {
+        OListNode *tempNext = walker->getNext();
+        walker->setNext(trailer); //changes arrow direction
+        trailer = walker;
+        walker = tempNext;
+    }
+    head = trailer;
 }
 
 int OList::length() {
