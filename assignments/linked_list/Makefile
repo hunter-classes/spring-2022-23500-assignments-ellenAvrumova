@@ -19,4 +19,4 @@ List.o: List.cpp List.h	Node.h
 Node.o: Node.cpp Node.h	
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) tests.o
