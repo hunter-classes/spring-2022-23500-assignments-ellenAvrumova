@@ -8,6 +8,7 @@ int main() {
 
     srand(time(nullptr));
 
+    /**
     std::vector<int> left{1,2,5,6,10,15};
     std::vector<int> right{3,7,8,12,16,19,20};
 
@@ -18,6 +19,7 @@ int main() {
     std::vector<int>m = merge(left,right);
     std::cout << "Left and Right merge sorted: ";
     print_vector(m);
+    */
 
     std::vector<int> b(size);
     for(int i = 0; i < size; i++) {
@@ -29,12 +31,9 @@ int main() {
     std::cout << "Merge sorted vector: ";
     print_vector(msort(b));
 
-    std::cout << "Count the second value: " << count(msort(b), msort(b)[1]) << std::endl; //sorted so it's easier to handcount
     std::cout << "Find the largest value: " << largest(b) << std::endl;
-    std::vector<int> c{1,2,3,4,4,5,5,6,7,8,8,8,9};
-    std::cout << "Find the mode: " << mode(c) << std::endl; //8
-
-
+    std::cout << "Find the mode: " << mode(b) << std::endl;
+    std::cout << "Count the mode: " << count(b,mode(b)) << std::endl;
 
 
     return 0;

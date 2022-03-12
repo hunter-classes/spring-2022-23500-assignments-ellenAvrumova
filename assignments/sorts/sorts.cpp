@@ -39,7 +39,7 @@ std::vector<int> merge(std::vector<int> left, std::vector<int> right) {
 
     int l = 0;
     int r = 0;
-    while(l < right.size() && r < right.size()) {
+    while(l < left.size() && r < right.size()) {
         if(left[l] < right[r]) {
             merged.push_back(left[l]);
             l++;
@@ -56,7 +56,7 @@ std::vector<int> merge(std::vector<int> left, std::vector<int> right) {
     }
     //add any extra elements in right
     while(r < right.size()) {
-        merged.push_back(right[l]);
+        merged.push_back(right[r]);
         r++;
     }
     return merged;
@@ -78,7 +78,7 @@ std::vector<int> msort(std::vector<int> v) {
         right.push_back(v[i]);
     }
     
-    merged = merge(ssort(left), ssort(right));
+    merged = merge(msort(left), msort(right));
 
     return merged;
 }
