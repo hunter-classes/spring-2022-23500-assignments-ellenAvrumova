@@ -32,9 +32,9 @@ int main() {
     print_vector(msort(b));
 
     std::cout << "Find the largest value: " << largest(b) << std::endl;
-    std::cout << "Find the mode: " << mode(b) << std::endl;
+    std::cout << "Find the mode: " << mode(b) << std::endl; //if there are 2 modes, it will return the last one
+    std::cout << "Find the mode2: " << mode2(b) << std::endl; //if there are 2 modes, it will return the first one
     std::cout << "Count the mode: " << count(b,mode(b)) << std::endl;
-
 
     return 0;
 }

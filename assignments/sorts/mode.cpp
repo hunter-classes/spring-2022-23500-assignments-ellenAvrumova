@@ -34,3 +34,24 @@ int mode(std::vector<int> v) {
     }
     return mode;
 }
+
+int mode2(std::vector<int> v) {
+    int arr[largest(v)];
+    for(int i = 0; i < largest(v); i++) {
+        arr[i]= 0;
+    }
+    
+    for(int i = 0; i < v.size(); i++) {
+        arr[v[i]]++;
+    }
+
+    int mode = 0;
+    int count = 0;
+    for(int i = 0; i < largest(v); i++) {
+        if(arr[i] > count) {
+            mode = i;
+            count = arr[i];
+        }
+    }
+    return mode;
+}
