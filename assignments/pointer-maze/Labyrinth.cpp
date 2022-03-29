@@ -1,20 +1,23 @@
 #include "Labyrinth.h"
 
-bool isPathToFreedom(MazeCell* start, const std::string& moves) {
-    bool foundSpellbook = false;
-    bool foundPotion = false;
-    bool foundWand = false;
+std::vector<bool> collectItems(Item i, std::vector<bool> items) {
+    //the first, second, and third values of items holds the boolean values for
+    //foundSpellbook, foundPotion, and foundWand respectively
+    if(i == Item::SPELLBOOK) { items[0] = true; }
+    if(i == Item::POTION) { items[1] = true; }
+    if(i == Item::WAND) { items[2] = true; }
+    return items;
+}
 
+bool foundAllItems(std::vector<bool> i) {
+    return i[0] && i[1] && i[2];
+}
+
+bool isPathToFreedom(MazeCell* start, const std::string& moves) {
+    std::vector<bool> items(3, false);
+    
     for(int i = 0; i < moves.length(); i++) {
-        if(start->whatsHere == Item::SPELLBOOK) {
-            foundSpellbook = true;
-        }
-        if(start->whatsHere == Item::POTION) {
-            foundPotion = true;
-        }
-        if(start->whatsHere == Item::WAND) {
-            foundWand = true;
-        }
+        items = collectItems(start->whatsHere, items); //updates items with new bool values
 
         if(moves.at(i) == 'N') {
             if(start->north == nullptr) {
@@ -40,27 +43,11 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
             }
             start = start->west;
         }
+        items = collectItems(start->whatsHere, items);
 
-        if(start->whatsHere == Item::SPELLBOOK) {
-            foundSpellbook = true;
-        }
-        if(start->whatsHere == Item::POTION) {
-            foundPotion = true;
-        }
-        if(start->whatsHere == Item::WAND) {
-            foundWand = true;
-        }
-
-        if(foundSpellbook && foundPotion && foundWand) {
+        if(foundAllItems(items)) {
             return true;
         }
     }
-    if(foundSpellbook && foundPotion && foundWand) {
-        return true;
-    }
-    return false;
+    return foundAllItems(items);
 }
-    /* TODO: Delete this comment and the remaining lines, then implement this function. */
-    // (void) start;
-    // (void) moves;
-    // return false;

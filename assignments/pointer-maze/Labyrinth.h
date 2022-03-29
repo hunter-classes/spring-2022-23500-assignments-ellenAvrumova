@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <vector>
+
 
 /**
  * Type representing an item in the maze.
@@ -29,3 +31,5 @@ struct MazeCell {
  * and you can't move in directions that don't exist in the maze.
  */
 bool isPathToFreedom(MazeCell* start, const std::string& moves);
+std::vector<bool> collectItems(Item i, std::vector<bool> items);
+bool foundAllItems(std::vector<bool> i);
