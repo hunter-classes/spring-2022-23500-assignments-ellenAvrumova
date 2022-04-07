@@ -13,5 +13,5 @@ std::vector<int> ssort(std::vector<int> a);
 std::vector<int> merge(std::vector<int> left, std::vector<int> right);
 std::vector<int> msort(std::vector<int> v);
 std::vector<int> qsort(std::vector<int> list);
-std::vector<int> quickSort(std::vector<int> list, int L, int H);
+void qsort2(std::vector<int> &list, int low, int high);
 void print_help(char *command_name);

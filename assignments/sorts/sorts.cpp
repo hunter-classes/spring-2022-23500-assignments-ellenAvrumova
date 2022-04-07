@@ -128,37 +128,47 @@ std::vector<int> qsort(std::vector<int> list) {
     return list; 
 }
 
-std::vector<int> quickSort(std::vector<int> list, int L, int H) {
-    // int L = 0;
-    //H = list.size()-1;
-    int M = (list.size()-1)/2;
-    int pivot;
+void qsort2(std::vector<int> &list, int low, int high) {
+    if(low < high) {
+        // int middle = (list.size()-1)/2;
+        // int pivotIndex, pivotValue;
+        // if((list[low] < list[high] && list[low] > list[middle]) || (list[low] > list[high] && list[low] < list[middle])) {
+        //     pivotValue = list[low];
+        //     pivotIndex = low;
+        // }
+        // else if((list[high] < list[low] && list[high] > list[middle]) || (list[high] > list[low] && list[high] < list[middle])) {
+        //     pivotValue = list[high];
+        //     pivotIndex = high;
+        // }
+        // else {
+        //     pivotValue = list[middle];
+        //     pivotIndex = middle;
+        // }
 
-    if(L >= H) {
-        return list;
-    }
+        int pivotIndex = low + (high - low) / 2;
+        int pivotValue = list[pivotIndex];
+        int i = low, j = high;
+        int temp;
+        while(i <= j) {
+            while(list[i] < pivotValue) {
+                i++;
+            }
+            while(list[j] > pivotValue) {
+                j--;
+            }
+            if(i <= j) {
+                temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        int partition = i;
 
-    if((list[L] < list[H] && list[L] > list[M]) || (list[L] > list[H] && list[L] < list[M])) {
-        pivot = list[L];
+        qsort2(list, low, partition - 1);
+        qsort2(list, partition, high);
     }
-    else if((list[H] < list[L] && list[H] > list[M]) || (list[H] > list[L] && list[H] < list[M])) {
-        pivot = list[H];
-    }
-    else {
-        pivot = list[M];
-    }
-
-    if(list[L] < pivot) {
-        L++;
-    }
-    else {
-        int temp = list[L];
-        list[L] = list[H];
-        list[H] = temp;
-        H--;
-    }
-
-    return quickSort(list, L, H);
 }
 
 void print_help(char *command_name) {
