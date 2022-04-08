@@ -1,6 +1,6 @@
-# Results for Project 3 by Ellen Avrumova #
+* Results for Project 3 by Ellen Avrumova
 
-# Merge Sort #
+* Merge Sort
 This sorting method was faster than quick sort 1 but slower than quick sort 2.
 Size 10000 & max elem size 100: 110 ms.
 Size 100000 & max elem size 100: 743 ms.
@@ -8,7 +8,7 @@ Size 1000000 & max elem size 100: 8291 ms.
 
 This size lagged so I won't continue to a bigger size.
 
-# Quick Sort 1 #
+ * Quick Sort 1 
 This sorting method was slower than merge sort regardless of the pivot.
 
 Size 10000 & max elem size 100 & good pivot: 120 ms.
@@ -18,7 +18,7 @@ Size 100000 & max elem size 100 & bad pivot: 5900 ms.
 
 This size lagged so I won't continue to a bigger size.
 
-# Quick Sort 2 #
+* Quick Sort 2
 This is the quickest sorting method by far.
 Size 10000 & max elem size 100 & good pivot: 2 ms.
 Size 10000 & max elem size 100 & bad pivot: 3 ms.
