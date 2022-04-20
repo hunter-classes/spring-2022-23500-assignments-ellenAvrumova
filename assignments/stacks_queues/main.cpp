@@ -29,9 +29,14 @@ int main() {
 
     std::cout << "\n********** QUEUES **********" << std::endl;
     Queue *q = new Queue();
+    std::cout << q->is_empty() << std::endl; //true
+    std::cout << q->is_full() << std::endl; //false
+
     q->enqueue(3);
     q->enqueue(5);
     q->enqueue(4);
+    std::cout << q->is_empty() << std::endl; //false
+    std::cout << q->is_full() << std::endl; //false
 
     q->print(); // 3 5 4
 
@@ -51,7 +56,9 @@ int main() {
 
     q->enqueue(13);
     q->print(); // 21 13 4 10 15
-
+    
+    std::cout << q->is_empty() << std::endl; //false
+    std::cout << q->is_full() << std::endl; //true
 
     return 0;
 }

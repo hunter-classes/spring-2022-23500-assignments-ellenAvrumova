@@ -9,13 +9,13 @@ Queue::Queue(){
 }
 
 void Queue::enqueue(int item) {
+    if(size >= 5) {
+        throw QUEUE_ERR_FULL;
+    }
     if(tail == 5 && head != 0 && counter < head) {
         queue[counter] = item;
         tail = counter;
         counter++;
-    }
-    if(size >= 5) {
-        throw QUEUE_ERR_FULL;
     }
     queue[tail] = item;
     size++;
@@ -48,4 +48,13 @@ void Queue::print() {
         }
     }
 	std::cout << std::endl;
+}
+
+bool Queue::is_empty() {
+    std::cout << std::boolalpha;
+    return size == 0;
+}
+
+bool Queue::is_full() {
+    return ((head == 0 && tail == 5) || (tail == head && !is_empty()));
 }
