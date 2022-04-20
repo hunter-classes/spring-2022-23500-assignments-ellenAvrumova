@@ -52,7 +52,7 @@ void Queue::print() {
 
 bool Queue::is_empty() {
     std::cout << std::boolalpha;
-    return size == 0;
+    return (head == 0 && tail == 0);
 }
 
 bool Queue::is_full() {
