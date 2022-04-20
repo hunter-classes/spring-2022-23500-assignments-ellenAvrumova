@@ -27,6 +27,9 @@ int Stack::pop() {
 }
 
 int Stack::top() {
+    if(length == 0) {
+        throw STACK_ERR_EMPTY;
+    }
     return stack->locate(0);
 }
 
@@ -34,7 +37,3 @@ bool Stack::is_empty() {
     std::cout << std::boolalpha;
     return length == 0;
 }
-
-
-
-
