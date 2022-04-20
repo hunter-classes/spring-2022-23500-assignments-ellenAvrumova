@@ -37,17 +37,15 @@ int Queue::front() {
 }
 
 void Queue::print() {
-	for (int i = 0; i < size; i++)
-	{
-        if(i == head) {
-            std::cout << "head: " << queue[i] << " ";
+    if(tail <= head) {
+        for (int i = 0; i < size; i++) {
+            std::cout << queue[i] << " "; 
         }
-        else if(i == tail) {
-            std::cout << "tail: " << queue[i] << " ";
-        }
-        else {
+    }
+    else {
+        for (int i = head; i < tail; i++) {
             std::cout << queue[i] << " ";
         }
-	}
+    }
 	std::cout << std::endl;
 }

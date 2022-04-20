@@ -40,7 +40,6 @@ int main() {
 
     q->enqueue(10);
     q->print(); // 5 4 10
-    std::cout << q->front() << std::endl; //5
     
     q->enqueue(15);
     q->print(); // 5 4 10 15
