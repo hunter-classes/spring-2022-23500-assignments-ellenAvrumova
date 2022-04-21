@@ -2,14 +2,19 @@
 #include "queue.h"
 
 Queue::Queue(){
+    queue = new int[5];
     size = 0;
     head = 0;
     tail = 0;
     counter = 0;
 }
 
+Queue::~Queue() {
+    delete[] queue;
+}
+
 void Queue::enqueue(int item) {
-    if(size >= 5) {
+    if((head == 0 && tail == 5) || (tail == head && !is_empty())) {
         throw QUEUE_ERR_FULL;
     }
     if(tail == 5 && head != 0 && counter < head) {
@@ -23,7 +28,7 @@ void Queue::enqueue(int item) {
 }
 
 int Queue::sequeue() {
-    if(size <= 0) {
+    if(head == 0 && tail == 0) {
         throw QUEUE_ERR_EMPTY;
     }
     int front = queue[head];
@@ -36,20 +41,6 @@ int Queue::front() {
     return queue[head];
 }
 
-void Queue::print() {
-    if(tail <= head) {
-        for (int i = 0; i < size; i++) {
-            std::cout << queue[i] << " "; 
-        }
-    }
-    else {
-        for (int i = head; i < tail; i++) {
-            std::cout << queue[i] << " ";
-        }
-    }
-	std::cout << std::endl;
-}
-
 bool Queue::is_empty() {
     std::cout << std::boolalpha;
     return (head == 0 && tail == 0);
@@ -57,4 +48,21 @@ bool Queue::is_empty() {
 
 bool Queue::is_full() {
     return ((head == 0 && tail == 5) || (tail == head && !is_empty()));
+}
+
+std::string Queue::printQueue() {
+    std::string q = "";
+    if(tail <= head) {
+        for (int i = 0; i < size; i++) {
+            q += std::to_string(queue[i]);
+            q += " "; 
+        }
+    }
+    else {
+        for (int i = head; i < tail; i++) {
+            q += std::to_string(queue[i]);
+            q += " ";
+        }
+    }
+    return q;
 }

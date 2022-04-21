@@ -6,17 +6,18 @@
 
 class Queue {
     private:
-        int queue[5];
+        int* queue;
         int size;
         int head;
         int tail;
         int counter;
     public:
         Queue();
+        ~Queue();
         void enqueue(int item); // add an item to the back of the queue
         int sequeue(); // remove and return the item from the front of the queue
         int front(); // return but do not remove the item from the front of the queue
         bool is_empty();
         bool is_full();
-        void print();
+        std::string printQueue();
 };

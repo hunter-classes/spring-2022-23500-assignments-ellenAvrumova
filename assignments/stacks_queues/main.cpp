@@ -38,24 +38,24 @@ int main() {
     std::cout << q->is_empty() << std::endl; //false
     std::cout << q->is_full() << std::endl; //false
 
-    q->print(); // 3 5 4
+    std::cout << q->printQueue() << std::endl; // 3 5 4
 
     std::cout << "REMOVE " << q->sequeue() << std::endl; // 3
-    q->print(); // 5 4
+    std::cout << q->printQueue() << std::endl; // 5 4
 
     q->enqueue(10);
-    q->print(); // 5 4 10
+    std::cout << q->printQueue() << std::endl; // 5 4 10
     
     q->enqueue(15);
-    q->print(); // 5 4 10 15
+    std::cout << q->printQueue() << std::endl; // 5 4 10 15
 
     q->enqueue(21);
-    q->print(); // 21 5 4 10 15
+    std::cout << q->printQueue() << std::endl; // 21 5 4 10 15
 
     std::cout << "REMOVE " << q->sequeue() << std::endl; // 5
 
     q->enqueue(13);
-    q->print(); // 21 13 4 10 15
+    std::cout << q->printQueue() << std::endl; // 21 13 4 10 15
     
     std::cout << q->is_empty() << std::endl; //false
     std::cout << q->is_full() << std::endl; //true
