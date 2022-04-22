@@ -1,7 +1,7 @@
 #include <iostream>
 #include "queue.h"
 
-Queue::Queue(){
+Queue::Queue() {
     queue = new int[5];
     size = 0;
     head = 0;
@@ -28,26 +28,31 @@ void Queue::enqueue(int item) {
 }
 
 int Queue::sequeue() {
-    if(head == 0 && tail == 0) {
+    if(is_empty()) {
         throw QUEUE_ERR_EMPTY;
     }
     int front = queue[head];
     head++;
     size--;
+    if(head > 5) {
+        head = head % 5;
+    }
     return front;
 }
 
 int Queue::front() {
+    if(is_empty()) {
+        throw QUEUE_ERR_EMPTY;
+    }
     return queue[head];
 }
 
 bool Queue::is_empty() {
-    std::cout << std::boolalpha;
-    return (head == 0 && tail == 0);
+    return size == 0;
 }
 
 bool Queue::is_full() {
-    return ((head == 0 && tail == 5) || (tail == head && !is_empty()));
+    return size == 5;
 }
 
 std::string Queue::printQueue() {
@@ -64,5 +69,11 @@ std::string Queue::printQueue() {
             q += " ";
         }
     }
+    /**
+    q += "Head: ";
+    q += std::to_string(head);
+    q += " Tail: ";
+    q += std::to_string(tail);
+    */
     return q;
 }

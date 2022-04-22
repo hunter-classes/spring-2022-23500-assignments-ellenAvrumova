@@ -60,5 +60,25 @@ int main() {
     std::cout << q->is_empty() << std::endl; //false
     std::cout << q->is_full() << std::endl; //true
 
+    Queue *t = new Queue();
+
+    t->enqueue(5);
+    t->enqueue(10);
+    t->enqueue(15);
+    t->enqueue(20);
+    t->enqueue(25);
+    std::cout << t->printQueue() << std::endl;
+    t->sequeue();
+    t->sequeue();
+    t->sequeue();
+    t->sequeue();
+    t->sequeue();
+    std::cout << t->printQueue() << std::endl;
+    t->enqueue(1);
+    t->enqueue(3);
+    t->enqueue(7);
+    t->enqueue(9);
+    std::cout << t->printQueue() << std::endl;
+
     return 0;
 }
