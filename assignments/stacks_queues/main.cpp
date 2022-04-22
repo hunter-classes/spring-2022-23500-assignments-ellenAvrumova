@@ -29,14 +29,14 @@ int main() {
 
     std::cout << "\n********** QUEUES **********" << std::endl;
     Queue *q = new Queue();
-    std::cout << q->is_empty() << std::endl; //true
-    std::cout << q->is_full() << std::endl; //false
+    std::cout << "EMPTY? " << q->is_empty() << std::endl; //true
+    std::cout << "FULL? " << q->is_full() << std::endl; //false
 
     q->enqueue(3);
     q->enqueue(5);
     q->enqueue(4);
-    std::cout << q->is_empty() << std::endl; //false
-    std::cout << q->is_full() << std::endl; //false
+    std::cout << "EMPTY? " << q->is_empty() << std::endl; //false
+    std::cout << "FULL? " << q->is_full() << std::endl; //false
 
     std::cout << q->printQueue() << std::endl; // 3 5 4
 
@@ -57,8 +57,8 @@ int main() {
     q->enqueue(13);
     std::cout << q->printQueue() << std::endl; // 21 13 4 10 15
     
-    std::cout << q->is_empty() << std::endl; //false
-    std::cout << q->is_full() << std::endl; //true
+    std::cout << "EMPTY? " << q->is_empty() << std::endl; //false
+    std::cout << "FULL? " << q->is_full() << std::endl; //true
 
     Queue *t = new Queue();
 
@@ -68,17 +68,22 @@ int main() {
     t->enqueue(20);
     t->enqueue(25);
     std::cout << t->printQueue() << std::endl;
-    t->sequeue();
-    t->sequeue();
-    t->sequeue();
-    t->sequeue();
-    t->sequeue();
+    std::cout << "REMOVE " << t->sequeue() << std::endl;
+    std::cout << "REMOVE " << t->sequeue() << std::endl;
+    std::cout << "REMOVE " << t->sequeue() << std::endl;
+    std::cout << "REMOVE " << t->sequeue() << std::endl;
+    std::cout << "REMOVE " << t->sequeue() << std::endl;
+
+    std::cout << "EMPTY? " << t->is_empty() << std::endl; //true
     std::cout << t->printQueue() << std::endl;
     t->enqueue(1);
     t->enqueue(3);
     t->enqueue(7);
     t->enqueue(9);
+    t->enqueue(13);
     std::cout << t->printQueue() << std::endl;
+    std::cout << "FULL? " << t->is_full() << std::endl; //true
+    std::cout << "EMPTY? " << q->is_empty() << std::endl; //false
 
     return 0;
 }
