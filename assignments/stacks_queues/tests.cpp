@@ -62,3 +62,60 @@ TEST_CASE("EMPTY") {
     CHECK(s->is_empty() == true);
 }
 
+Queue *a = new Queue();
+Queue *b = new Queue();
+
+TEST_CASE("IS EMPTY") {
+    CHECK(a->is_empty() == true);
+    CHECK(b->is_empty() == true);
+}
+
+TEST_CASE("ENQUEUE") {
+    a->enqueue(5);
+    CHECK(a->front() == 5);
+    a->enqueue(10);
+    CHECK(a->front() == 5);
+    a->enqueue(15);
+    CHECK(a->front() == 5);
+    a->enqueue(20);
+    a->enqueue(25);
+
+    try {
+        a->enqueue(30);
+    } catch(int e) {
+        CHECK(e == QUEUE_ERR_FULL);
+    }
+    CHECK(a->front() == 5);
+}
+
+TEST_CASE("IS FULL") {
+    CHECK(a->is_full() == true);
+}
+
+TEST_CASE("SEQUEUE") {
+    a->sequeue();
+    CHECK(a->front() == 10);
+    a->sequeue();
+    CHECK(a->front() == 15);
+    a->sequeue();
+    CHECK(a->front() == 20);
+    a->sequeue();
+    CHECK(a->front() == 25);
+    a->sequeue();
+
+    try {
+        a->front();
+    } catch(int e) {
+        CHECK(e == QUEUE_ERR_EMPTY);
+    }
+    try {
+        a->sequeue();
+    } catch(int e) {
+        CHECK(e == QUEUE_ERR_EMPTY);
+    }
+}
+
+TEST_CASE("IS EMPTY") {
+    CHECK(a->is_empty() == true);
+}
+
