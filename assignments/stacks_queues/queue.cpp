@@ -11,6 +11,10 @@ Queue::Queue() {
 
 Queue::~Queue() {
     delete[] queue;
+    size = 0;
+    head = 0;
+    tail = 0;
+    counter = 0;
 }
 
 void Queue::enqueue(int item) {
@@ -32,14 +36,14 @@ int Queue::sequeue() {
         throw QUEUE_ERR_EMPTY;
     }
     int front;
-    if(head > 5) {
-        int front = queue[head % 5];
+    if(head >= 5) {
+        front = queue[head % 5];
         head++;
         size--;
         return front;
     }
     else {
-        int front = queue[head];
+        front = queue[head];
         head++;
         size--;
         return front;
@@ -49,6 +53,9 @@ int Queue::sequeue() {
 int Queue::front() {
     if(is_empty()) {
         throw QUEUE_ERR_EMPTY;
+    }
+    if(head >= 5) {
+        return queue[head % 5];
     }
     return queue[head];
 }
@@ -75,13 +82,5 @@ std::string Queue::printQueue() {
             q += " ";
         }
     }
-    
-    q += "Head: ";
-    q += std::to_string(head);
-    q += " Tail: ";
-    q += std::to_string(tail);
-    q += " Counter: ";
-    q += std::to_string(counter);
-
     return q;
 }

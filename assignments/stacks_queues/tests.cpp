@@ -62,23 +62,35 @@ TEST_CASE("EMPTY") {
     CHECK(s->is_empty() == true);
 }
 
+TEST_CASE("DESTRUCTOR") {
+    s->~Stack();
+    try {
+        s->top();
+    } catch(int e) {
+        CHECK(e == STACK_ERR_EMPTY);
+    }
+}
+
 Queue *a = new Queue();
-Queue *b = new Queue();
 
 TEST_CASE("IS EMPTY") {
     CHECK(a->is_empty() == true);
-    CHECK(b->is_empty() == true);
 }
 
 TEST_CASE("ENQUEUE") {
     a->enqueue(5);
     CHECK(a->front() == 5);
+    CHECK(a->printQueue() == "5 ");
     a->enqueue(10);
     CHECK(a->front() == 5);
+    CHECK(a->printQueue() == "5 10 ");
     a->enqueue(15);
     CHECK(a->front() == 5);
+    CHECK(a->printQueue() == "5 10 15 ");
     a->enqueue(20);
+    CHECK(a->printQueue() == "5 10 15 20 ");
     a->enqueue(25);
+    CHECK(a->printQueue() == "5 10 15 20 25 ");
 
     try {
         a->enqueue(30);
@@ -95,13 +107,18 @@ TEST_CASE("IS FULL") {
 TEST_CASE("SEQUEUE") {
     a->sequeue();
     CHECK(a->front() == 10);
+    CHECK(a->printQueue() == "10 15 20 25 ");
     a->sequeue();
     CHECK(a->front() == 15);
+    CHECK(a->printQueue() == "15 20 25 ");
     a->sequeue();
     CHECK(a->front() == 20);
+    CHECK(a->printQueue() == "20 25 ");
     a->sequeue();
     CHECK(a->front() == 25);
+    CHECK(a->printQueue() == "25 ");
     a->sequeue();
+    CHECK(a->printQueue() == "");
 
     try {
         a->front();
@@ -113,9 +130,26 @@ TEST_CASE("SEQUEUE") {
     } catch(int e) {
         CHECK(e == QUEUE_ERR_EMPTY);
     }
-}
 
-TEST_CASE("IS EMPTY") {
     CHECK(a->is_empty() == true);
+
+    a->enqueue(2);
+    CHECK(a->front() == 2);
+    a->enqueue(4);
+    a->enqueue(6);
+    a->enqueue(8);
+    a->enqueue(10);
+    CHECK(a->printQueue() == "2 4 6 8 10 ");
 }
 
+TEST_CASE("IS FULL") {
+    CHECK(a->is_full() == true);
+}
+
+TEST_CASE("DESTRUCTOR") {
+    a->~Queue();
+    try {
+    } catch(int e) {
+        CHECK(e == QUEUE_ERR_EMPTY);
+    }
+}
