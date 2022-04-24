@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Node.h"
+#include "BSTree.h"
 
 int main() {
     /** Video 2 Code
@@ -14,7 +15,7 @@ int main() {
     std::cout << n->getRight()->getData() << std::endl;
     */
 
-   //Video 2 Task
+   /** Video 2 Task
    Node *n = new Node(10);
    Node *n2 = new Node(20);
    Node *n3 = new Node(30);
@@ -32,8 +33,11 @@ int main() {
    std::cout << n->getData() << std::endl; //10
    std::cout << n->getLeft()->getData() << " " << n->getLeft()->getLeft()->getData() << " " << n->getLeft()->getLeft()->getLeft()->getData() << std::endl; //20 30 40
    std::cout << n->getRight()->getData() << " " << n->getRight()->getRight()->getData() << " " << n->getRight()->getLeft()->getData() <<std::endl; //50 60 70
-
-   
+   */
+  
+   BSTree *t = new BSTree();
+   t->setup();
+   std::cout << t->get_debug_String() << std::endl;
 
    return 0;
 }
