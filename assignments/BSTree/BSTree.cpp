@@ -9,6 +9,15 @@ void BSTree::insert(int d) {
 
 }
 
+std::string BSTree::get_debug_String_helper(Node *n) {
+    if(n == nullptr) {
+        return "";
+    }
+    else {
+        return (std::to_string(n->getData()) + "-->" + get_debug_String_helper(n->getLeft())  + "-->" + get_debug_String_helper(n->getRight()));
+    }
+}
+
 std::string BSTree::get_debug_String() {
     if(root == nullptr) {
         return "";

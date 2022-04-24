@@ -9,5 +9,6 @@ class BSTree {
         BSTree();
         void insert(int d);
         std::string get_debug_String();
+        std::string get_debug_String_helper(Node *n);
         void setup();
 };
