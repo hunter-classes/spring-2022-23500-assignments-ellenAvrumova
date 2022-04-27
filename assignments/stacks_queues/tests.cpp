@@ -149,6 +149,7 @@ TEST_CASE("IS FULL") {
 TEST_CASE("DESTRUCTOR") {
     a->~Queue();
     try {
+        a->sequeue();
     } catch(int e) {
         CHECK(e == QUEUE_ERR_EMPTY);
     }
