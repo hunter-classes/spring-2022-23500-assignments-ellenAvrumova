@@ -33,37 +33,38 @@ int main() {
    std::cout << n->getData() << std::endl; //10
    std::cout << n->getLeft()->getData() << " " << n->getLeft()->getLeft()->getData() << " " << n->getLeft()->getLeft()->getLeft()->getData() << std::endl; //20 30 40
    std::cout << n->getRight()->getData() << " " << n->getRight()->getRight()->getData() << " " << n->getRight()->getLeft()->getData() <<std::endl; //50 60 70
-
-
+   
    BSTree *t = new BSTree();
    t->setup();
-   std::cout << t->get_debug_String() << std::endl; //it traverses through 10 20 30 40 50 60 70, all the nodes
-   
-   BSTree *t2 = new BSTree();
-   t2->setup();
 
-   std::cout << t2->get_debug_String() << std::endl;
+   std::cout << "Setup: " << t->get_debug_String() << std::endl;
    int v = 15;
 
    try {
-       int x = t2->search(v);
+       int x = t->search(v);
        std::cout << "Found: " << x << std::endl;
    } catch(int e) {
        std::cout << v << " not found\n";
    }
 
    t->insert(22);
-   std::cout << t2->get_debug_String() << std::endl;
+   std::cout << "Insert 22: " << t->get_debug_String() << std::endl;
    t->insert(3);
-   std::cout << t2->get_debug_String() << std::endl;
+   std::cout << "Insert 3: " << t->get_debug_String() << std::endl;
 
    try {
-       int x = t2->rsearch(v);
-       std::cout << "Found: " << x << std::endl;
+        int x = t->rsearch(v);
+        std::cout << "Found " << x << " recursively" << std::endl;
    } catch(int e) {
        std::cout << v << " not found\n";
    }
 
-   
+   t->rinsert(2);
+   std::cout << "Insert 2 recursively: " << t->get_debug_String() << std::endl;
+   t->rinsert(9);
+   std::cout << "Insert 9 recursively: " << t->get_debug_String() << std::endl;
+   t->rinsert(8);
+   std::cout << "Insert 8 recursively: " << t->get_debug_String() << std::endl;
+
    return 0;
 }
