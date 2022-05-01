@@ -77,11 +77,35 @@ std::string BSTree::get_debug_String() {
 
 void BSTree::setup() {
     Node *n = new Node(10);
-    root =n;
+    root = n;
     n = new Node(20);
-    root->setLeft(n);
-    n = new Node(30);
     root->setRight(n);
-    n = new Node(40);
-    root->getLeft()->setLeft(n);
+    Node *n2 = new Node(30);
+    n->setRight(n2);
+    n2 = new Node(15);
+    n->setLeft(n2);
+    n2 = new Node(5);
+    root->setLeft(n2);
+    n = new Node(3);
+    n2->setLeft(n);
+    n = new Node(8);
+    n2->setRight(n);
 }
+
+int BSTree::rsearch(int value) {
+    return rsearch(value, root);
+}
+
+int BSTree::rsearch(int value, Node *p) {
+    if(p == nullptr) {
+        throw 1;
+    }
+    if(p->getData() == value) {
+        return value;
+    }
+    if(p->getData() < value) {
+        return rsearch(value, p->getRight());
+    }
+    return rsearch(value, p->getLeft());
+}
+

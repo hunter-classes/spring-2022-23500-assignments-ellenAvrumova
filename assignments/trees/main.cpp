@@ -56,5 +56,14 @@ int main() {
    std::cout << t2->get_debug_String() << std::endl;
    t->insert(3);
    std::cout << t2->get_debug_String() << std::endl;
+
+   try {
+       int x = t2->rsearch(v);
+       std::cout << "Found: " << x << std::endl;
+   } catch(int e) {
+       std::cout << v << " not found\n";
+   }
+
+   
    return 0;
 }
