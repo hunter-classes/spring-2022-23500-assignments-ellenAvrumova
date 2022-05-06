@@ -88,8 +88,6 @@ void BSTree::setup() {
     root->setLeft(n2);
     n = new Node(3);
     n2->setLeft(n);
-    Node *n6 = new Node(4);
-    n->setRight(n6);
     n = new Node(8);
     n2->setRight(n);
 }
