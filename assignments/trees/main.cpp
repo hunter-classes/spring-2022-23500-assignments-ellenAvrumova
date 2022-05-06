@@ -66,5 +66,17 @@ int main() {
    t->rinsert(8);
    std::cout << "Insert 8 recursively: " << t->get_debug_String() << std::endl;
 
+   std::cout << "Tree sum: " << t->treesum() << std::endl;
+
+   std::cout << t->get_debug_String() << std::endl;
+
+   BSTree *tr = new BSTree();
+   tr->setup();
+   std::cout << tr->get_debug_String() << std::endl;
+   std::cout << tr->deleteNode(3) << std::endl;
+   std::cout << tr->deleteNode(5) << std::endl;
+   std::cout << tr->deleteNode(20) << std::endl;
+   std::cout << tr->get_debug_String() << std::endl;
+
    return 0;
 }

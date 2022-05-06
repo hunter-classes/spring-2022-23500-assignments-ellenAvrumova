@@ -16,4 +16,7 @@ class BSTree {
         int rsearch(int value, Node *p);
         int rinsert(int value);
         int rinsert(int value, Node *p);
+        int treesum(Node *n);
+        int treesum();
+        int deleteNode(int value);
 };

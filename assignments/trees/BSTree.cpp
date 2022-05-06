@@ -88,6 +88,8 @@ void BSTree::setup() {
     root->setLeft(n2);
     n = new Node(3);
     n2->setLeft(n);
+    Node *n6 = new Node(4);
+    n->setRight(n6);
     n = new Node(8);
     n2->setRight(n);
 }
@@ -135,4 +137,79 @@ int BSTree::rinsert(int value, Node *p) {
     else {
         return rinsert(value, p->getLeft());
     }
+}
+
+int BSTree::treesum(Node *n) {
+    if(n == nullptr) {
+        return 0;
+    }
+    else {
+        return n->getData() + treesum(n->getLeft()) + treesum(n->getRight());
+    }
+}
+
+int BSTree::treesum() {
+    return treesum(root);
+}
+
+int BSTree::deleteNode(int value) {
+    Node *t = root;
+    Node *prev = t;
+    while(t != nullptr) {
+        int tval = t->getData();
+        int preVal = prev->getData();
+        if(tval == value) {
+            if((t->getLeft() == nullptr && t->getRight() == nullptr)) { //delete a leaf
+                if(tval < preVal) {
+                    prev->setLeft(nullptr);
+                }
+                else {
+                    prev->setRight(nullptr);
+                }
+                return value;
+            }
+            else if((t->getLeft() != nullptr && t->getRight() == nullptr) || (t->getLeft() == nullptr && t->getRight() != nullptr)) { //delete a node with 1 child
+                if(t->getRight() != nullptr) {
+                    prev->setLeft(t->getRight());
+                    return value;
+                }
+                prev->setRight(t->getLeft());
+                return value;
+            }
+            else if(t->getLeft() != nullptr && t->getRight() != nullptr) { //delete a node with 2 children
+                Node *big = t;
+                Node *small = t;
+                while(big->getRight() != nullptr){
+                    big = big->getRight();
+                }
+                while(small->getLeft() != nullptr) {
+                    small = small->getLeft();
+                }
+                if(tval < preVal) {
+                    prev->setLeft(small);
+                    while(small->getRight() != nullptr) {
+                        small = small->getRight();
+                    }
+                    small->setRight(t->getRight());
+                }
+                else {
+                    prev->setRight(big);
+                    while(big->getLeft() != nullptr) {
+                        big = big->getLeft();
+                    }
+                    big->setLeft(t->getLeft());
+                }
+                return value;
+            }
+        }
+        else if(t->getData() < value) {
+            prev = t;
+            t = t->getRight();
+        }
+        else {
+            prev = t;
+            t = t->getLeft();
+        }
+    }
+    throw 1;
 }
