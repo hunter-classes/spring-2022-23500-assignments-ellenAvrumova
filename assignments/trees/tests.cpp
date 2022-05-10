@@ -74,6 +74,14 @@ TEST_CASE("TREESUM") {
     CHECK(t->treesum() == 127);
 }
 
+TEST_CASE("COUNT LEAVES") {
+    CHECK(t->numLeaves() == 4);
+}
+
+TEST_CASE("HEIGHT") {
+    CHECK(t->height() == 4);
+}
+
 TEST_CASE("DELETE") {
     t->deleteNode(2); //delete a leaf
     CHECK(t->get_debug_String() == ", 3, , 5, , 7, , 8, , 10, , 13, , 14, , 15, , 20, , 30, ");
@@ -89,4 +97,22 @@ TEST_CASE("DELETE") {
         CHECK(e == 1);
     }
     CHECK(t->get_debug_String() == ", 3, , 7, , 10, , 13, , 14, , 15, , 30, ");
+}
+
+TEST_CASE("COUNT LEAVES") {
+    CHECK(t->numLeaves() == 2);
+    BSTree *tr = new BSTree();
+    tr->setup();
+    CHECK(tr->numLeaves() == 4);
+}
+
+TEST_CASE("HEIGHT") {
+    CHECK(t->height() == 4);
+}
+
+TEST_CASE("COUSINS") {
+    CHECK(t->cousins(3, 30) == true);
+    CHECK(t->cousins(7, 15) == true);
+    CHECK(t->cousins(10, 13) == false);
+    CHECK(t->cousins(30, 14) == false);
 }
