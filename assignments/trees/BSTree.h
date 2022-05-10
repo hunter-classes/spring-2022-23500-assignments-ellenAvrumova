@@ -19,4 +19,9 @@ class BSTree {
         int treesum(Node *n);
         int treesum();
         int deleteNode(int value);
+        int countLeaves(Node *n);
+        int numLeaves();
+        int height(Node *n);
+        int height();
+        bool cousins(int a, int b);
 };

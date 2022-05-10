@@ -175,27 +175,22 @@ int BSTree::deleteNode(int value) {
                 return value;
             }
             else if(t->getLeft() != nullptr && t->getRight() != nullptr) { //delete a node with 2 children
-                Node *big = t;
-                Node *small = t;
-                while(big->getRight() != nullptr){
-                    big = big->getRight();
-                }
-                while(small->getLeft() != nullptr) {
-                    small = small->getLeft();
-                }
-                if(tval < preVal) {
-                    prev->setLeft(small);
-                    while(small->getRight() != nullptr) {
-                        small = small->getRight();
+                Node *big = t->getLeft();
+                Node *small = t->getRight();
+                if(tval > preVal) {
+                    while(small->getLeft() != nullptr) {
+                        small = small->getLeft();
                     }
-                    small->setRight(t->getRight());
+                    small->setLeft(t->getLeft());
+                    prev->setRight(small);
+
                 }
                 else {
-                    prev->setRight(big);
-                    while(big->getLeft() != nullptr) {
-                        big = big->getLeft();
+                    while(big->getRight() != nullptr) {
+                        big = big->getRight();
                     }
-                    big->setLeft(t->getLeft());
+                    big->setRight(t->getRight());
+                    prev->setLeft(big);
                 }
                 return value;
             }
@@ -210,4 +205,74 @@ int BSTree::deleteNode(int value) {
         }
     }
     throw 1;
+}
+
+int BSTree::numLeaves() {
+    return countLeaves(root);
+}
+
+int BSTree::countLeaves(Node *n) {
+    if(n == nullptr) {
+        return 0;
+    }
+    else {
+        if(n->getLeft() == nullptr && n->getRight() == nullptr) {
+            return 1;
+        }
+        return countLeaves(n->getLeft()) + countLeaves(n->getRight());
+    }
+}
+
+int BSTree::height() {
+    return height(root);
+}
+
+int BSTree::height(Node *n) {
+    //we count height by number of edges
+    if(n == nullptr) {
+        return -1; //so it only counts the edges, not nodes
+    }
+    int left = height(n->getLeft());
+    int right = height(n->getRight());
+    if(left > right) {
+        return left + 1;
+    }
+    return right + 1;
+}
+
+bool BSTree::cousins(int a, int b) {
+    std::cout << std::boolalpha;
+    Node *t = root;
+    int level1 = 0;
+    int level2 = 0;
+    while(t != nullptr) {
+        int tval = t->getData();
+        if(tval == a) {
+            break;
+        }
+        else if(tval < a) {
+            level1++;
+            t = t->getRight();
+        }
+        else {
+            level1++;
+            t = t->getLeft();
+        }
+    }
+    t = root;
+    while(t != nullptr) {
+        int tval = t->getData();
+        if(tval == b) {
+            break;
+        }
+        else if(tval < b) {
+            level2++;
+            t = t->getRight();
+        }
+        else {
+            level2++;
+            t = t->getLeft();
+        }
+    }
+    return level1 == level2;
 }

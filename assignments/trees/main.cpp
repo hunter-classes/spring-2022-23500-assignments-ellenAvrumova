@@ -78,5 +78,14 @@ int main() {
    std::cout << tr->deleteNode(20) << std::endl;
    std::cout << tr->get_debug_String() << std::endl;
 
+   BSTree *t2 = new BSTree();
+   t2->setup();
+   std::cout << "Number of leaves: " << t2->numLeaves() << std::endl;
+   t2->insert(2);
+   std::cout << "Number of leaves: " << t2->numLeaves() << std::endl;
+   std::cout << "Height: " << t2->height() << std::endl;
+   std::cout << "Cousins: " << t2->cousins(5,20) << std::endl;
+   std::cout << "Cousins: " << t2->cousins(8,20) << std::endl;
+
    return 0;
 }
