@@ -7,7 +7,7 @@ main.o: main.cpp Dictionary.h Person.h List.h Node.h
 tests: tests.o Dictionary.o Person.o List.o Node.o
 	g++ -o tests tests.o Dictionary.o Person.o List.o Node.o
 
-tests.o: tests.cpp Dictionary.h Person.h List.h Node.h
+tests.o: tests.cpp doctest.h Dictionary.h Person.h List.h Node.h
 	g++ -c tests.cpp -std=c++11
 
 Dictionary.o: Dictionary.cpp Dictionary.h
