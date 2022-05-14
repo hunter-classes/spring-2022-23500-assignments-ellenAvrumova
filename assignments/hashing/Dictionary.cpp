@@ -38,9 +38,10 @@ Person* Dictionary::retrieve(Person *p) {
 std::string Dictionary::getAll() {
     std::string all = "";
     for(int i = 0; i < 10; i++) {
-        //all += "Index " + std::to_string(i) + ": ";
-        all += arr[i]->toString();
-        all += " | ";
+        if(arr[i]->toString() != "nullptr") {
+            all += arr[i]->toString();
+            all += " | ";
+        }
     }
     return all;
 }

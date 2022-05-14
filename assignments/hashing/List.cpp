@@ -103,6 +103,7 @@ Person* List::search(Person *p) {
         if(walker->getPerson() == p) {
            return walker->getPerson();
         }
+        walker = walker->getNext();
     }
     return nullptr;
 }

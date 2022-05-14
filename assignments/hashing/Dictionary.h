@@ -9,8 +9,8 @@ class Dictionary {
     public:
         Dictionary();
         ~Dictionary();
+        int hash(std::string name);
         void insert(Person *p);
         Person* retrieve(Person *p);
         std::string getAll();
-        int hash(std::string name);
 };
