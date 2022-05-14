@@ -11,6 +11,6 @@ class Node {
         Node(Person *p, Node *next);
         void setPerson(Person *p);
         void setNext(Node *next);
-        Person getPerson();
+        Person* getPerson();
         Node *getNext();
 };

@@ -25,7 +25,7 @@ std::string List::toString() {
     Node *walker = head;
     std::string s  = "";
     while(walker != nullptr) {
-        s += walker->getPerson().get_name() + "-->";
+        s += walker->getPerson()->get_name() + "-->";
         walker = walker->getNext();
     }
     s += "nullptr";
@@ -80,4 +80,29 @@ void List::remove(int index) {
         trailer->setNext(walker->getNext());
         delete walker;
     }
+}
+
+Person* List::locate(Person *p, int index) {
+    Node *walker = head;
+
+    while(walker != nullptr && index > 0) {
+        walker = walker->getNext();
+        index--;
+    }
+    if(walker) {
+        return walker->getPerson();
+    }
+    else {
+        return nullptr;
+    }
+}
+
+Person* List::search(Person *p) {
+    Node* walker = head;
+    while(walker != nullptr) {
+        if(walker->getPerson() == p) {
+           return walker->getPerson();
+        }
+    }
+    return nullptr;
 }

@@ -22,10 +22,10 @@ void Node::setNext(Node *next) {
     this->next = next;
 }
 
-Person Node::getPerson() {
-    return *this->p;
+Person* Node::getPerson() {
+    return this->p;
 }
 
-Node *Node::getNext() {
+Node* Node::getNext() {
     return this->next;
 }
