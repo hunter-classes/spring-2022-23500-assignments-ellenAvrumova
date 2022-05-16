@@ -30,7 +30,7 @@ void Dictionary::insert(Person *p) {
 Person* Dictionary::retrieve(Person *p) {
     int index = hash(p->get_name());
     if(arr[index] == nullptr) {
-        return nullptr;
+        throw NOT_FOUND;
     }
     return arr[index]->search(p);
 }

@@ -105,5 +105,5 @@ Person* List::search(Person *p) {
         }
         walker = walker->getNext();
     }
-    return nullptr;
+    throw NOT_FOUND;
 }

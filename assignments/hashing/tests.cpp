@@ -58,9 +58,19 @@ TEST_CASE("INSERT") {
 }
 
 TEST_CASE("RETRIEVE") {
-    CHECK(d->retrieve(ellen) == nullptr);
+    try {
+        d->retrieve(ellen);
+        CHECK(d->retrieve(ellen) == ellen);
+    } catch(int e) {
+        CHECK(e == NOT_FOUND);
+    }
+    try {
+        d->retrieve(boris);
+        CHECK(d->retrieve(boris) == boris);
+    } catch(int e) {
+        CHECK(e == NOT_FOUND);
+    }
     CHECK(d->retrieve(a) == a);
-    CHECK(d->retrieve(boris) == nullptr);
     CHECK(d->retrieve(c) == c);
     CHECK(d->retrieve(f) == f);
     d->insert(boris);

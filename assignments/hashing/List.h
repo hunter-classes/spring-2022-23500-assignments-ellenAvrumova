@@ -1,6 +1,8 @@
 #pragma once
 #include "Node.h"
 
+#define NOT_FOUND 1
+
 class List {
     private:
         Node *head;

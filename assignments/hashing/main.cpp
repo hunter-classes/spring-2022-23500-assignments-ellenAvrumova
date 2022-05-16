@@ -25,7 +25,11 @@ int main() {
 
     std::cout << "************RETRIEVAL************" << std::endl;
     Person *guy = new Person("Guy", "The", 5);
-    std::cout << d->retrieve(guy) << std::endl;
+    try {
+        d->retrieve(guy);
+    } catch(int e) {
+        std::cout << "ERROR NOT_FOUND: " << e << std::endl;
+    }
     d->insert(guy);
     std::cout << d->getAll() << std::endl;
     std::cout << d->retrieve(guy)->get_name() << std::endl;
